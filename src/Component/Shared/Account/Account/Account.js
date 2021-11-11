@@ -33,7 +33,7 @@ function Account() {
                                             <>
                                                 <div className="form-check">
                                                     <input key={Math.random()} onChange={() => setToggle(!toggle)} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                                    <label className="form-check-label" htmlfor="flexCheckDefault">
+                                                    <label className="form-check-label" htmlFor="flexCheckDefault">
                                                         Want To Create New Account?
                                                     </label>
                                                 </div>
@@ -42,7 +42,7 @@ function Account() {
                                             <>
                                                 <div className="form-check">
                                                     <input key={Math.random()} onChange={() => setToggle(!toggle)} className="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-                                                    <label className="form-check-label" htmlfor="flexCheckChecked">
+                                                    <label className="form-check-label" htmlFor="flexCheckChecked">
                                                         Have Account Already?
                                                     </label>
                                                 </div>
@@ -50,7 +50,7 @@ function Account() {
                                 }
                                 <div className="form-check">
                                     <input onChange={() => setReset(!reset)} className="form-check-input" type="checkbox" value="" id="flexCheckReset" />
-                                    <label className="form-check-label" htmlfor="flexCheckReset">
+                                    <label className="form-check-label" htmlFor="flexCheckReset">
                                         Reset?
                                     </label>
                                 </div>

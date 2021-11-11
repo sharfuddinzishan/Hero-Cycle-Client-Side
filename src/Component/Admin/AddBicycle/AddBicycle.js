@@ -116,14 +116,14 @@ const AddBicycle = () => {
                                 onBlur={handleInput}
                             />
                         </div>
-                        <div class="mb-0 mb-md-1">
+                        <div className="mb-0 mb-md-1">
                             <label htmlFor="gender" className="form-label fs-6 fw-bold">Gender</label>
                             <select id="gender" className="form-select form-select-sm" name="gender" onChange={handleInput}>
                                 <option value="Boys">Boys</option>
                                 <option value="Women">Women</option>
                             </select>
                         </div>
-                        <div class="mb-0 mb-md-1">
+                        <div className="mb-0 mb-md-1">
                             <label htmlFor="category" className="form-label fs-6 fw-bold">Category</label>
                             <select id="category" className="form-select form-select-sm" name="category" onChange={handleInput}>
                                 <option value="Kids">Kids</option>
@@ -132,7 +132,7 @@ const AddBicycle = () => {
                             </select>
                         </div>
                     </div>
-                    <div class="mb-0 mb-md-1">
+                    <div className="mb-0 mb-md-1">
                         <label htmlFor="picture" className="form-label fs-6 fw-bold">Picture URL</label>
                         <input
                             type="text"
@@ -144,7 +144,7 @@ const AddBicycle = () => {
                             onBlur={handleInput}
                         />
                     </div>
-                    <div class="mb-2">
+                    <div className="mb-2">
                         <label htmlFor="overview" className="form-label fw-bold">Summary</label>
                         <textarea
                             className="form-control"

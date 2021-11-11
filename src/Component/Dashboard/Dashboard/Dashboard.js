@@ -10,11 +10,8 @@ import AddReviews from '../../User/AddReviews/AddReviews'
 import MyReviews from '../../User/MyReviews/MyReviews'
 import AdminRoute from '../../../PrivateRoute/AdminRoute'
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import useFirebase from '../../../Hooks/useFirebase';

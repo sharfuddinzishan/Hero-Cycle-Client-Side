@@ -6,7 +6,7 @@ import useAuth from '../../../../Hooks/useAuth';
 initialization();
 const Register = () => {
     // Get Firebase settings  from custom hook
-    const { createUser, setUserFullName, error, setError, sendVerification } = useAuth();
+    const { createUser, error } = useAuth();
     const [userInfo, setUserInfo] = useState({});
     const location = useLocation();
     const history = useHistory();

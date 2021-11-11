@@ -47,7 +47,7 @@ const Header = () => {
                                         <>
                                             <li className="nav-item">
                                                 <NavLink className="nav-link"
-                                                    to="/order"
+                                                    to="/ordernow"
                                                     activeStyle={{
                                                         fontWeight: "bold",
                                                         color: "#636"

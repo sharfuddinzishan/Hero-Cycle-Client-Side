@@ -4,7 +4,7 @@ import useAuth from '../../../../Hooks/useAuth';
 
 const Login = () => {
     // Retrieved firebase methos, state from custom hook
-    const { signInGoogle, signInEmailPass, error, setError } = useAuth();
+    const { signInGoogle, signInEmailPass, error } = useAuth();
     const [userInfo, setUserInfo] = useState({});
     const location = useLocation();
     const history = useHistory();

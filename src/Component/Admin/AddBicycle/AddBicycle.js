@@ -2,7 +2,18 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const AddBicycle = () => {
-    const [singleCycle, setSingleCycle] = useState({});
+    const [singleCycle, setSingleCycle] = useState({
+        model: '',
+        price: '',
+        frameSize: 'N/A',
+        weight: 'N/A',
+        material: 'N/A',
+        preferAge: 'N/A',
+        gender: 'N/A',
+        category: 'All',
+        picture: '',
+        overview: ''
+    });
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     const token = localStorage.getItem('tokenID')
@@ -71,9 +82,9 @@ const AddBicycle = () => {
                             />
                         </div>
                         <div className="mb-0 mb-md-1">
-                            <label htmlFor="frameSize" className="form-label fs-6 fw-bold">Frame Size</label>
+                            <label htmlFor="frameSize" className="form-label fs-6 fw-bold">Frame Size(cm)</label>
                             <input
-                                type="number"
+                                type="text"
                                 className="form-control form-control-sm"
                                 id="frameSize"
                                 name="frameSize"
@@ -82,9 +93,9 @@ const AddBicycle = () => {
                             />
                         </div>
                         <div className="mb-0 mb-md-1">
-                            <label htmlFor="weight" className="form-label fs-6 fw-bold">Weight</label>
+                            <label htmlFor="weight" className="form-label fs-6 fw-bold">Weight(gm)</label>
                             <input
-                                type="number"
+                                type="text"
                                 className="form-control form-control-sm"
                                 id="weight"
                                 name="weight"
@@ -126,6 +137,7 @@ const AddBicycle = () => {
                         <div className="mb-0 mb-md-1">
                             <label htmlFor="category" className="form-label fs-6 fw-bold">Category</label>
                             <select id="category" className="form-select form-select-sm" name="category" onChange={handleInput}>
+                                <option value="All">All</option>
                                 <option value="Kids">Kids</option>
                                 <option value="City">City</option>
                                 <option value="Doraimon">Doraimon</option>

@@ -10,7 +10,7 @@ const MyOrder = (props) => {
 
     useEffect(() => {
         setLoadingSingleCycle(true)
-        axios.get(`http://localhost:4000/cycles/${getOrder.cycleID}`)
+        axios.get(`https://hero-cycle.herokuapp.com/cycles/${getOrder.cycleID}`)
             .then(result => {
                 console.log(result)
                 if (result?.data?.model) {

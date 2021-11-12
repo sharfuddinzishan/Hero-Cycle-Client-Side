@@ -8,7 +8,7 @@ const SingleOrderDetails = (props) => {
 
     useEffect(() => {
         setLoadingCycleInfo(true)
-        axios.get(`http://localhost:4000/cycles/${getSingleOrderDetails.cycleID}`)
+        axios.get(`https://hero-cycle.herokuapp.com/cycles/${getSingleOrderDetails.cycleID}`)
             .then(result => {
                 if (result?.data?.model) {
                     setSingleCycleInfo(result.data);

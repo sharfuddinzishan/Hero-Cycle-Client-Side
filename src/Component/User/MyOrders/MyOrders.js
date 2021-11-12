@@ -14,7 +14,7 @@ const MyOrders = () => {
     const { user } = useAuth()
     useEffect(() => {
         setLoader(true);
-        let url = `http://localhost:4000/user/orders?email=${user?.email}`
+        let url = `https://hero-cycle.herokuapp.com/user/orders?email=${user?.email}`
         axios.get(url)
             .then(result => {
                 console.log(result?.data.length)

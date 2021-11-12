@@ -30,7 +30,7 @@ const UpdateOrders = (props) => {
         setRefreshed(false)
         setError(false)
         setLoading(true)
-        axios.put('http://localhost:4000/order', getSingleOrderInfo)
+        axios.put('https://hero-cycle.herokuapp.com/order', getSingleOrderInfo)
             .then(result => {
                 console.log(result)
                 if (!result.data.modifiedCount) { setError(true) }

@@ -45,7 +45,7 @@ const Header = () => {
                                 {
                                     user?.email ?
                                         <>
-                                            <li className="nav-item">
+                                            {/* <li className="nav-item">
                                                 <NavLink className="nav-link"
                                                     to="/orderus"
                                                     activeStyle={{
@@ -54,7 +54,7 @@ const Header = () => {
                                                     }}>
                                                     Order Us
                                                 </NavLink>
-                                            </li>
+                                            </li> */}
                                             <li className="nav-item">
                                                 <NavLink className="nav-link"
                                                     to="/dashboard"
@@ -127,7 +127,7 @@ const Header = () => {
                                                     to="/"
                                                     activeStyle={{
                                                         fontWeight: "bold",
-                                                        color: "#636"
+                                                        color: "#EE4949"
                                                     }}>
                                                     LogOut
                                                 </NavLink>

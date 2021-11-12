@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import SingleCycleModalInfo from '../SingleCycleModalInfo/SingleCycleModalInfo';
 import UpdateBicycles from '../UpdateBicycles/UpdateBicycles';
 import './AllBicycles.css'

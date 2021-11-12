@@ -1,55 +1,57 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useParams } from 'react-router';
-import useAuth from '../../Hooks/useAuth';
-
-const SingleBicycleDetails = (props) => {
-    const { isAdmin, user } = useAuth()
-    let cycleID;
-    let { bicycleID } = useParams();
-
-    if (props.cycleID)
-        cycleID = props.cycleID
-    else
-        cycleID = bicycleID
-
+const SingleOrderDetails = (props) => {
+    const orderID = props.orderID
+    const getSingleOrderDetails = props.getSingleOrderDetails || {}
     const [getSingleCycleInfo, setSingleCycleInfo] = useState({});
-    let [loading, setLoading] = useState(true);
+    let [loadingCycleInfo, setLoadingCycleInfo] = useState(true);
 
     useEffect(() => {
-        setLoading(true)
-        axios.get(`https://hero-cycle.herokuapp.com/cycles/${cycleID}`)
+        setLoadingCycleInfo(true)
+        axios.get(`http://localhost:4000/cycles/${getSingleOrderDetails.cycleID}`)
             .then(result => {
                 if (result?.data?.model) {
                     setSingleCycleInfo(result.data);
-                    setLoading(false)
+                    setLoadingCycleInfo(false);
                 }
             })
             .catch(() => {
-                setLoading(false)
+                setLoadingCycleInfo(false);
             })
-    }, [cycleID])
+    }, [orderID])
+
+
 
     return (
         <div className="container p-3">
             <h1 className="text-center">Details of <span className="fw-bold text-info">{getSingleCycleInfo.model}</span></h1>
             <div className="row">
                 {
-                    !loading && <>
-                        <div className="col-12 col-md-5">
+                    !loadingCycleInfo && <>
+                        <div className="col-12 col-md-3">
                             <img className="img-fluid" src={getSingleCycleInfo.picture} alt="" />
+                            <h6 className="text-success fw-bold">Shipping Address</h6>
+                            <p className="text-muted"><small>{getSingleOrderDetails.shippingAddress}</small></p>
                         </div>
-                        <div className="col-12 col-md-7">
+                        <div className="col-12 col-md-9">
                             <table id="all-bicycles" className="ms-auto table able-sm w-75">
                                 <tbody>
                                     <tr>
                                         <th scope="col">Model</th>
-                                        <th className="fw-normal" scope="col">{getSingleCycleInfo.model}</th>
+                                        <th className="fw-normal" scope="col">
+                                            <h6>
+                                                {getSingleOrderDetails.model}
+                                                <span class="badge bg-warning">{getSingleOrderDetails.orderStatus}</span>
+                                            </h6>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Order By</th>
+                                        <th className="fw-normal" scope="col">{getSingleOrderDetails.orderBy}</th>
                                     </tr>
                                     <tr>
                                         <th scope="col">Price</th>
-                                        <th className="fw-normal" scope="col">{getSingleCycleInfo.price}</th>
+                                        <th className="fw-normal" scope="col">{getSingleOrderDetails.price} Taka</th>
                                     </tr>
                                     <tr>
                                         <th scope="col">Frame</th>
@@ -64,7 +66,7 @@ const SingleBicycleDetails = (props) => {
                                         <th className="fw-normal" scope="col">{getSingleCycleInfo.material}</th>
                                     </tr>
                                     <tr>
-                                        <th scope="col">Age+</th>
+                                        <th scope="col">Prefer Age</th>
                                         <th className="fw-normal" scope="col">{getSingleCycleInfo.preferAge}</th>
                                     </tr>
                                     <tr
@@ -75,18 +77,15 @@ const SingleBicycleDetails = (props) => {
                                         <th scope="col">category</th>
                                         <th className="fw-normal" scope="col">{getSingleCycleInfo.category}</th>
                                     </tr>
-                                    {
-                                        (!isAdmin && user?.email) && <tr>
-                                            <th colSpan="2">
-                                                <Link to={`/ordernow/${getSingleCycleInfo._id}`}>
-                                                    <button className='btn btn-primary d-block mx-auto'>Order Now!</button>
-                                                </Link>
-                                            </th>
-                                        </tr>
-                                    }
                                 </tbody>
                             </table>
                         </div>
+                        {
+                            getSingleOrderDetails.orderNote && <div className="col-12">
+                                <h3>Your Query</h3>
+                                <p className="text-muted">{getSingleOrderDetails.orderNote}</p>
+                            </div>
+                        }
                         <div className="col-12">
                             <h3>Overview</h3>
                             <p className="text-muted">{getSingleCycleInfo.overview}</p>
@@ -98,4 +97,4 @@ const SingleBicycleDetails = (props) => {
     );
 };
 
-export default SingleBicycleDetails;
+export default SingleOrderDetails;

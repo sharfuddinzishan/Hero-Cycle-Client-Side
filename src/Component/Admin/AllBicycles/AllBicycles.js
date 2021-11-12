@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import SingleCycleModalInfo from '../SingleCycleModalInfo/SingleCycleModalInfo';
 import UpdateBicycles from '../UpdateBicycles/UpdateBicycles';
 import './AllBicycles.css'
 
@@ -54,7 +55,18 @@ const AllBicycles = () => {
 
                                                 return <tr key={index}>
                                                     <th scope="row">{index + 1}</th>
-                                                    <td><Link to={`/bicyles/${cycleID}`}>{model}</Link></td>
+                                                    <td>
+                                                        <button
+                                                            type="button"
+                                                            id="adminDetailsBtn"
+                                                            class="btn btn-sm btn-outline-primary"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#detailsModal"
+                                                            onClick={() => setCycleID(cycleID)}
+                                                        >
+                                                            {model}
+                                                        </button>
+                                                    </td>
                                                     <td>{price}</td>
                                                     <td>{frameSize}</td>
                                                     <td>{weight}</td>
@@ -87,7 +99,10 @@ const AllBicycles = () => {
                     </div>
                 </div>
                 {
-                    <UpdateBicycles setRefreshed={setRefreshed} getCycleID={getCycleID}></UpdateBicycles>
+                    <>
+                        <UpdateBicycles setRefreshed={setRefreshed} getCycleID={getCycleID}></UpdateBicycles>
+                        <SingleCycleModalInfo getCycleID={getCycleID}></SingleCycleModalInfo>
+                    </>
                 }
             </div>
         </>

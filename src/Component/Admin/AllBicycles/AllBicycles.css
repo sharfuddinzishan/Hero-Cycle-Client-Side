@@ -1,6 +1,6 @@
 #bicycles th,td,tr{
     font-size: smaller;
 }
-#adminCycleUpdateBtn{
+#adminDetailsBtn,#adminCycleUpdateBtn{
     font-size: smaller;
 }

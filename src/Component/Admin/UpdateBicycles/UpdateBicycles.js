@@ -35,7 +35,6 @@ const UpdateBicycles = (props) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(getSingleCycleInfo)
         setLoading(true)
         setSuccess(false)
         setError(false)
@@ -61,7 +60,7 @@ const UpdateBicycles = (props) => {
                             {
                                 !loading && <h5 className="modal-title" id="staticBackdropLabel"> {getSingleCycleInfo?.model}</h5>
                             }
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button onClick={() => { setError(false); setSuccess(false) }} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             {
@@ -195,6 +194,19 @@ const UpdateBicycles = (props) => {
                                                 <option value="Doraimon">Doraimon</option>
                                             </select>
                                         </div>
+                                        <div className="mb-0 mb-md-1">
+                                            <label htmlFor="status" className="form-label fs-6 fw-bold">Status</label>
+                                            <select
+                                                id="status"
+                                                className="form-select form-select-sm"
+                                                name="status"
+                                                onChange={handleInput}
+                                                defaultValue={getSingleCycleInfo?.status || 'active'}
+                                            >
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div className="mb-0 mb-md-1">
                                         <label htmlFor="picture" className="form-label fs-6 fw-bold">Picture URL</label>
@@ -227,7 +239,7 @@ const UpdateBicycles = (props) => {
                             }
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button onClick={() => { setError(false); setSuccess(false) }} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

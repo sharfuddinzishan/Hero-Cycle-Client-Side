@@ -25,7 +25,7 @@ const Header = () => {
                                     <Link className="nav-link" to="/">Home</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/bicyles">Explore Bicycles</Link>
+                                    <Link className="nav-link" to="/bicycles">Explore Bicycles</Link>
                                 </li>
                                 {
                                     !user?.email &&
@@ -47,12 +47,12 @@ const Header = () => {
                                         <>
                                             <li className="nav-item">
                                                 <NavLink className="nav-link"
-                                                    to="/ordernow"
+                                                    to="/orderus"
                                                     activeStyle={{
                                                         fontWeight: "bold",
                                                         color: "#636"
                                                     }}>
-                                                    Order Now
+                                                    Order Us
                                                 </NavLink>
                                             </li>
                                             <li className="nav-item">

@@ -6,7 +6,7 @@ export const useCycles = () => {
     const [loader, setLoader] = useState(false);
     useEffect(() => {
         setLoader(true);
-        let url = "https://hero-doctors.herokuapp.com/cycles";
+        let url = "https://hero-cycle.herokuapp.com/cycles";
         axios.get(url)
             .then(result => {
                 if (result.data) {

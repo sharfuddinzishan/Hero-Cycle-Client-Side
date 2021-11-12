@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCycles } from '../../../Hooks/useCycles';
+// import { useCycles } from '../../../Hooks/useCycles';
 import UpdateBicycles from '../UpdateBicycles/UpdateBicycles';
 import './AllBicycles.css'
 
@@ -13,7 +13,7 @@ const AllBicycles = () => {
     const [loader, setLoader] = useState(false);
     useEffect(() => {
         setLoader(true);
-        let url = "https://hero-doctors.herokuapp.com/cycles";
+        let url = "https://hero-cycle.herokuapp.com/cycles";
         axios.get(url)
             .then(result => {
                 if (result.data) {

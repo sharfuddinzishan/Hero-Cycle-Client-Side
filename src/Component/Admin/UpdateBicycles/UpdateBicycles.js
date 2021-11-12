@@ -13,7 +13,7 @@ const UpdateBicycles = (props) => {
         setLoading(true)
         setSuccess(false)
         setError(false)
-        axios.get(`https://hero-doctors.herokuapp.com/cycles/${getCycleID}`)
+        axios.get(`https://hero-cycle.herokuapp.com/cycles/${getCycleID}`)
             .then(result => {
                 if (result?.data?.model) {
                     setSingleCycleInfo(result.data);
@@ -41,7 +41,7 @@ const UpdateBicycles = (props) => {
         setSuccess(false)
         setError(false)
         setRefreshed(false)
-        axios.put('https://hero-doctors.herokuapp.com/cycle', getSingleCycleInfo, { headers })
+        axios.put('https://hero-cycle.herokuapp.com/cycle', getSingleCycleInfo, { headers })
             .then(result => {
                 if (result.data.status === 401) { setError(true) }
                 else {

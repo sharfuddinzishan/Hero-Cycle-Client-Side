@@ -29,7 +29,7 @@ const AddBicycle = () => {
         e.preventDefault();
         setSuccess(false)
         setError(false)
-        axios.post('https://hero-doctors.herokuapp.com/cycle', singleCycle, { headers })
+        axios.post('https://hero-cycle.herokuapp.com/cycle', singleCycle, { headers })
             .then(result => {
                 if (result.data.status === 401) { setError(true) }
                 else { setSuccess(true) }

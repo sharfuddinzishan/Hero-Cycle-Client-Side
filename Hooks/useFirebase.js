@@ -76,12 +76,12 @@ const useFirebase = () => {
     }
 
     const addUserToDB = (email, userName, isGoogleSignIn) => {
-        let url = `https://hero-doctors.herokuapp.com/user?email=${email}`
+        let url = `https://hero-cycle.herokuapp.com/user?email=${email}`
         axios.get(url)
             .then(result => {
                 if ((isGoogleSignIn && !result.data.email) || !isGoogleSignIn) {
                     const newUser = { email, userName, role: 'user' }
-                    axios.post(`https://hero-doctors.herokuapp.com/users`, newUser)
+                    axios.post(`https://hero-cycle.herokuapp.com/users`, newUser)
                         .then(result => {
                             setUserFullName(userName);
                             alert('User Registered Successfully!')
@@ -107,7 +107,7 @@ const useFirebase = () => {
         const unsubscribe = onAuthStateChanged(auth, user => {
             setError('')
             if (user) {
-                let url = `https://hero-doctors.herokuapp.com/user/admin?email=${user.email}`;
+                let url = `https://hero-cycle.herokuapp.com/user/admin?email=${user.email}`;
                 axios.get(url)
                     .then(result => {
                         if (result.data) {
@@ -128,7 +128,7 @@ const useFirebase = () => {
     }, [auth]);
 
     // useEffect(() => {
-    //     let url = `https://hero-doctors.herokuapp.com/user/admin?email=${user.email}`;
+    //     let url = `https://hero-cycle.herokuapp.com/user/admin?email=${user.email}`;
     //     axios.get(url)
     //         .then(result => {
     //             if (result.data) {

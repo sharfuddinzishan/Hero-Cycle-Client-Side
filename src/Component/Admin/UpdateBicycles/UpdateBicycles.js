@@ -9,7 +9,6 @@ const UpdateBicycles = (props) => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     useEffect(() => {
-        console.log(getCycleID)
         setLoading(true)
         setSuccess(false)
         setError(false)
@@ -55,20 +54,20 @@ const UpdateBicycles = (props) => {
 
     return (
         <>
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-xl modal-fullscreen-sm-down modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-xl modal-fullscreen-sm-down modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div className="modal-content">
+                        <div className="modal-header">
                             {
-                                !loading && <h5 class="modal-title" id="staticBackdropLabel"> {getSingleCycleInfo?.model}</h5>
+                                !loading && <h5 className="modal-title" id="staticBackdropLabel"> {getSingleCycleInfo?.model}</h5>
                             }
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             {
                                 success && <div className="alert alert-sm alert-success alert-dismissible fade show" role="alert">
                                     <strong>Updated!</strong> Cycle.
-                                    <button className="btn" type="button" onClick={() => setSuccess(false)} className="btn-close"
+                                    <button type="button" onClick={() => setSuccess(false)} className="btn-close"
                                         data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             }
@@ -227,8 +226,8 @@ const UpdateBicycles = (props) => {
                                 </form>
                             }
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>

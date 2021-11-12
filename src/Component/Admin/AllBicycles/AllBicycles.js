@@ -1,12 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useCycles } from '../../../Hooks/useCycles';
 import UpdateBicycles from '../UpdateBicycles/UpdateBicycles';
 import './AllBicycles.css'
 
 const AllBicycles = () => {
-    // const [cycles, loader] = useCycles();
     const [getCycleID, setCycleID] = useState('');
     let [refreshed, setRefreshed] = useState(false)
     const [cycles, setCycles] = useState([]);
@@ -72,7 +70,7 @@ const AllBicycles = () => {
                                                         <button
                                                             type="button"
                                                             id="adminCycleUpdateBtn"
-                                                            class="btn btn-sm btn-primary"
+                                                            className="btn btn-sm btn-primary"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#staticBackdrop"
                                                             onClick={() => setCycleID(cycleID)}
@@ -82,7 +80,7 @@ const AllBicycles = () => {
                                                     </td>
                                                 </tr>
                                             })}
-                                    </> : ''
+                                    </> : <tr></tr>
                                 }
                             </tbody>
                         </table>

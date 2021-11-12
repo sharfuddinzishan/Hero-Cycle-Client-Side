@@ -13,7 +13,7 @@ const AllBicycles = () => {
     const [loader, setLoader] = useState(false);
     useEffect(() => {
         setLoader(true);
-        let url = "http://localhost:4000/cycles";
+        let url = "https://hero-doctors.herokuapp.com/cycles";
         axios.get(url)
             .then(result => {
                 if (result.data) {

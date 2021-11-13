@@ -158,68 +158,68 @@ const OrderNow = () => {
                         {/* End Of Order Form  */}
                         <div className="col-12 col-md-3">
                             <img src={getSingleCycleInfo?.picture} className="img-fluid bg-info rounded-pill mb-1 img-thumbnail" alt="" />
-                            <div class="accordion mb-2" id="accordionExample">
-                                <div class="accordion-item border-2 border-top">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            <div className="accordion mb-2" id="accordionExample">
+                                <div className="accordion-item border-2 border-top">
+                                    <h2 className="accordion-header" id="headingOne">
+                                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
                                             Price
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body text-black-50">
+                                    <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body text-black-50">
                                             The price of <b>{getSingleCycleInfo.model.toUpperCase()}</b> is expected to be <span className="fs-4 fw-bold text-info">{getSingleCycleInfo.price}</span> Taka.
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item border-2 border-top">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                <div className="accordion-item border-2 border-top">
+                                    <h2 className="accordion-header" id="headingTwo">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
                                             What is Frame Size in unit of CM?
                                         </button>
                                     </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body text-black-50">
+                                    <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div className="accordion-body text-black-50">
                                             {getSingleCycleInfo.frameSize}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item border-2 border-top">
-                                    <h2 class="accordion-header" id="headingThree">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                <div className="accordion-item border-2 border-top">
+                                    <h2 className="accordion-header" id="headingThree">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
                                             Material
                                         </button>
                                     </h2>
-                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree"
                                         data-bs-parent="#accordionExample">
-                                        <div class="accordion-body text-black-50">
+                                        <div className="accordion-body text-black-50">
                                             {getSingleCycleInfo.material}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item border-2 border-top">
-                                    <h2 class="accordion-header" id="headingFour">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <div className="accordion-item border-2 border-top">
+                                    <h2 className="accordion-header" id="headingFour">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                             Net Weight
                                         </button>
                                     </h2>
-                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                    <div id="collapseFour" className="accordion-collapse collapse" aria-labelledby="headingFour"
                                         data-bs-parent="#accordionExample">
-                                        <div class="accordion-body text-black-50">
+                                        <div className="accordion-body text-black-50">
                                             {getSingleCycleInfo.weight}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item border-2 border-top">
-                                    <h2 class="accordion-header" id="headingFive">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                <div className="accordion-item border-2 border-top">
+                                    <h2 className="accordion-header" id="headingFive">
+                                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                             data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                             Perfect Age For This Bicycle?
                                         </button>
                                     </h2>
-                                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                    <div id="collapseFive" className="accordion-collapse collapse" aria-labelledby="headingFive"
                                         data-bs-parent="#accordionExample">
-                                        <div class="accordion-body text-black-50">
+                                        <div className="accordion-body text-black-50">
                                             {getSingleCycleInfo.preferAge}+
                                         </div>
                                     </div>

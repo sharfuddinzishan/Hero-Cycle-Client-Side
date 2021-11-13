@@ -22,6 +22,26 @@ const AllBicycles = () => {
             .catch(e => { })
             .finally(() => { setLoader(false) });
     }, [refreshed])
+
+    const handleCycleDelete = (cycleID) => {
+        const prompt = window.confirm('Want To Delete Cycle?');
+        if (prompt === true) {
+            setRefreshed(false);
+            axios.delete(`http://localhost:4000/cycles/${cycleID}`)
+                .then(result => {
+                    if (result.data.deletedCount === '0') {
+                        alert('Failed To Delete Cycle');
+                        setRefreshed(false)
+                    }
+                    else setRefreshed(true);
+                })
+                .catch(() => setRefreshed(false))
+                .finally(() => {
+                    setRefreshed(false);
+                })
+        }
+    }
+
     return (
         <>
             <div className="container-fluid py-3">
@@ -37,6 +57,7 @@ const AllBicycles = () => {
                                     <th scope="col"> Frame</th>
                                     <th scope="col"> Weight</th>
                                     <th scope="col"> Update</th>
+                                    <th scope="col"> Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,7 +79,7 @@ const AllBicycles = () => {
                                                         <button
                                                             type="button"
                                                             id="adminDetailsBtn"
-                                                            class="btn btn-sm btn-outline-primary"
+                                                            className="btn btn-sm btn-outline-primary"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#detailsModal"
                                                             onClick={() => setCycleID(cycleID)}
@@ -87,6 +108,16 @@ const AllBicycles = () => {
                                                             onClick={() => setCycleID(cycleID)}
                                                         >
                                                             Update
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button
+                                                            type="button"
+                                                            id="adminCycleDeleteBtn"
+                                                            className="btn btn-sm btn-primary"
+                                                            onClick={() => handleCycleDelete(cycleID)}
+                                                        >
+                                                            Delete
                                                         </button>
                                                     </td>
                                                 </tr>

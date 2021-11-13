@@ -8,6 +8,7 @@ import AllOrders from '../../Admin/AllOrders/AllOrders'
 import MyOrders from '../../User/MyOrders/MyOrders'
 import AddReviews from '../../User/AddReviews/AddReviews'
 import MyReviews from '../../User/MyReviews/MyReviews'
+import Pay from '../../User/Pay/Pay'
 import AdminRoute from '../../../PrivateRoute/AdminRoute'
 import {
     Switch,
@@ -19,7 +20,7 @@ import MakeAdmin from '../../Admin/MakeAdmin/MakeAdmin';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
-    let { isAdmin } = useFirebase();
+    let { isAdmin, logOut } = useFirebase();
 
     return (
         <>
@@ -82,34 +83,58 @@ const Dashboard = () => {
                                     <span className="w-100 d-block border border-2 border-top" ></span>
                                 </>
                             }
+                            {
+                                !isAdmin && <>
+                                    <li className="bg-info mb-1 text-center">
+                                        <NavLink className="nav-link text-light"
+                                            to={`${url}/user/show/orders`}
+                                            activeStyle={{
+                                                fontWeight: "bold",
+                                                color: "#636"
+                                            }}>
+                                            My Orders
+                                        </NavLink>
+                                    </li>
+                                    <li className="bg-info mb-1 text-center">
+                                        <NavLink className="nav-link text-light"
+                                            to={`${url}/user/payments`}
+                                            activeStyle={{
+                                                fontWeight: "bold",
+                                                color: "#636"
+                                            }}>
+                                            Pay
+                                        </NavLink>
+                                    </li>
+                                    <li className="bg-info mb-1 text-center">
+                                        <NavLink className="nav-link text-light"
+                                            to={`${url}/user/add/reviews`}
+                                            activeStyle={{
+                                                fontWeight: "bold",
+                                                color: "#636"
+                                            }}>
+                                            Add Reviews
+                                        </NavLink>
+                                    </li>
+                                    <li className="bg-info mb-1 text-center">
+                                        <NavLink className="nav-link text-light"
+                                            to={`${url}/user/show/reviews`}
+                                            activeStyle={{
+                                                fontWeight: "bold",
+                                                color: "#636"
+                                            }}>
+                                            All Reviews
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
                             <li className="bg-info mb-1 text-center">
-                                <NavLink className="nav-link text-light"
-                                    to={`${url}/user/show/orders`}
+                                <NavLink onClick={logOut} className="nav-link text-light"
+                                    to="/"
                                     activeStyle={{
                                         fontWeight: "bold",
                                         color: "#636"
                                     }}>
-                                    My Orders
-                                </NavLink>
-                            </li>
-                            <li className="bg-info mb-1 text-center">
-                                <NavLink className="nav-link text-light"
-                                    to={`${url}/user/add/reviews`}
-                                    activeStyle={{
-                                        fontWeight: "bold",
-                                        color: "#636"
-                                    }}>
-                                    Add Reviews
-                                </NavLink>
-                            </li>
-                            <li className="bg-info mb-1 text-center">
-                                <NavLink className="nav-link text-light"
-                                    to={`${url}/user/show/reviews`}
-                                    activeStyle={{
-                                        fontWeight: "bold",
-                                        color: "#636"
-                                    }}>
-                                    All Reviews
+                                    LogOut
                                 </NavLink>
                             </li>
                         </ul>
@@ -139,6 +164,9 @@ const Dashboard = () => {
                             </Route>
                             <Route path={`${path}/user/show/reviews`}>
                                 <MyReviews></MyReviews>
+                            </Route>
+                            <Route path={`${path}/user/payments`}>
+                                <Pay></Pay>
                             </Route>
                         </Switch>
                     </div>

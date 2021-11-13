@@ -14,20 +14,20 @@ const Footer = () => {
                                     Submit Your <span className="text-primary fw-bold">Query</span>
                                 </h1>
                                 <form id="contactForm">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="name">Name</label>
-                                        <input class="form-control" id="name" type="text" placeholder="Name" />
+                                    <div className="mb-3">
+                                        <label className="form-label" for="name">Name</label>
+                                        <input className="form-control" id="name" type="text" placeholder="Name" />
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="emailAddress">Email Address</label>
-                                        <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" />
+                                    <div className="mb-3">
+                                        <label className="form-label" for="emailAddress">Email Address</label>
+                                        <input className="form-control" id="emailAddress" type="email" placeholder="Email Address" />
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="form-label" for="message">Message</label>
-                                        <textarea class="form-control" cols="4" id="message" type="text" placeholder="Message"></textarea>
+                                    <div className="mb-3">
+                                        <label className="form-label" for="message">Message</label>
+                                        <textarea className="form-control" cols="4" id="message" type="text" placeholder="Message"></textarea>
                                     </div>
-                                    <div class="">
-                                        <button class="btn btn-primary btn-sm" type="submit">Submit</button>
+                                    <div className="">
+                                        <button className="btn btn-primary btn-sm" type="submit">Submit</button>
                                     </div>
                                 </form>
                                 {/* <div className="text-center mt-5">

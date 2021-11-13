@@ -37,12 +37,12 @@ const MakeAdmin = () => {
             <div className='container p-2'>
                 <h2>Make Admin</h2>
                 {
-                    success && <div class="alert alert-info" role="alert">
+                    success && <div className="alert alert-info" role="alert">
                         User Role Set To Admin
                     </div>
                 }
                 {
-                    error && <div class="alert alert-warning" role="alert">
+                    error && <div className="alert alert-warning" role="alert">
                         Failed To Set Role !
                     </div>
                 }

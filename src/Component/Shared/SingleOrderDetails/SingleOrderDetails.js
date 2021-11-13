@@ -41,7 +41,7 @@ const SingleOrderDetails = (props) => {
                                         <th className="fw-normal" scope="col">
                                             <h6>
                                                 {getSingleOrderDetails.model}
-                                                <span class="badge bg-warning">{getSingleOrderDetails.orderStatus}</span>
+                                                <span className="badge bg-warning">{getSingleOrderDetails.orderStatus}</span>
                                             </h6>
                                         </th>
                                     </tr>

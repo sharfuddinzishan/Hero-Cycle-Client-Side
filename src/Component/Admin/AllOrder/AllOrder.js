@@ -31,7 +31,7 @@ const AllOrder = (props) => {
                         <button
                             type="button"
                             id="adminOrderDetailsBtn"
-                            class="btn btn-sm btn-outline-primary"
+                            className="btn btn-sm btn-outline-primary"
                             data-bs-toggle="modal"
                             data-bs-target="#detailsModal"
                             onClick={() => { setOrderID(getOrder._id); setSingleOrderDetails(getOrder) }}

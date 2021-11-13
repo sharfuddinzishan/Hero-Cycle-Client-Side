@@ -71,16 +71,16 @@ const MyOrders = () => {
     return (
         <>
             <h4 className="py-2">My Orders ({user?.email})</h4>
-            <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div className="row row-cols-1 row-cols-md-2 g-4">
                 {
                     !loader && <>
                         {
                             orders.map(order => {
                                 return <div className="col" key={order._id}>
-                                    <div class="card">
+                                    <div className="card">
                                         <button
                                             type="button"
-                                            class="btn-close btn-close-black d-block ms-auto"
+                                            className="btn-close btn-close-black d-block ms-auto"
                                             aria-label="Close"
                                             onClick={() => handleCancel(order._id, order.orderStatus)}
                                             disabled={

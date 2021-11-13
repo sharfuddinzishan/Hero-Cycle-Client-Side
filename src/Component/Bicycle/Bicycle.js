@@ -29,7 +29,7 @@ const Bicycle = (props) => {
                 </ul>
                 <div className="card-footer text-center">
                     <Link to={`/bicycles/${cycleID}`}><button className="btn btn-sm btn-primary">Details</button></Link>
-                    <Link to={`/ordernow/${cycleID}`}><button className="btn btn-sm btn-primary ms-2">Order Now</button></Link>
+                    <Link to={`/ordernow/${cycleID}`}><button className="btn btn-sm btn-primary ms-2 bx bx-tada">Order Now</button></Link>
                 </div>
             </div>
         </div>

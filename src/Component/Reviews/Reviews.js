@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Rating from 'react-rating';
 
 const Reviews = () => {
     const [loadingReview, setLoadingReview] = useState(false);
@@ -19,14 +20,14 @@ const Reviews = () => {
         <div className="bg-info">
             <div className='container p-3'>
                 <h1 className="pb-2 border-bottom text-center text-center">
-                    Reviews <span className="text-primary fw-bold">By Customers</span>
+                    Customer <span className="text-primary fw-bold">Reviews</span>
                 </h1>
                 {
-                    !loadingReview && <> <div class="spinner-grow text-primary text-center" role="status">
-                        <span class="visually-hidden">Loading Reviews</span>
+                    !loadingReview && <> <div className="spinner-grow text-primary text-center" role="status">
+                        <span className="visually-hidden">Loading Reviews</span>
                     </div>
-                        <div class="spinner-grow text-primary text-center" role="status">
-                            <span class="visually-hidden">Loading Reviews</span>
+                        <div className="spinner-grow text-primary text-center" role="status">
+                            <span className="visually-hidden">Loading Reviews</span>
                         </div>
                     </>
                 }
@@ -34,11 +35,24 @@ const Reviews = () => {
                     {
                         loadingReview && reviews.map((review, index) => {
                             return < div className="col-12 col-sm-6 col-md-4">
-                                <div class="card text-dark bg-light mb-3">
-                                    <div class="card-header" style={{ border: '100px!important' }}>{review.userName}</div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">{review.subject}</h5>
-                                        <p class="card-text">{review.comment}.</p>
+                                <div className="card text-dark bg-light mb-3">
+
+                                    <div className="card-header" style={{ border: '100px!important' }}>Reviwed By-
+                                        <b> {review.userName}</b>
+                                    </div>
+                                    <div className="card-body">
+                                        <span>
+                                            <Rating
+                                                className="text-center d-block text-success"
+                                                emptySymbol={<i className="bx bx-star bx-tada"></i>}
+                                                fullSymbol={
+                                                    <i className='bx bxs-star bx-tada' ></i>
+                                                }
+                                                initialRating={3}
+                                                readonly
+                                            /></span>
+                                        <h5 className="card-title">{review.subject}</h5>
+                                        <p className="text-muted fs-6"> <small>{review.comment}.</small> </p>
                                     </div>
                                 </div>
                             </div>

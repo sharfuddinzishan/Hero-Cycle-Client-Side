@@ -43,7 +43,7 @@ const MyReviews = () => {
 
     return (
         <>
-            <table class="table caption-top">
+            <table className="table caption-top">
                 <caption>List of Reviews</caption>
                 <thead>
                     <tr>
@@ -58,11 +58,11 @@ const MyReviews = () => {
                 </thead>
                 <tbody>
                     {
-                        !loadingReview && <> <div class="spinner-grow text-primary text-center" role="status">
-                            <span class="visually-hidden">Loading Reviews</span>
+                        !loadingReview && <> <div className="spinner-grow text-primary text-center" role="status">
+                            <span className="visually-hidden">Loading Reviews</span>
                         </div>
-                            <div class="spinner-grow text-primary text-center" role="status">
-                                <span class="visually-hidden">Loading Reviews</span>
+                            <div className="spinner-grow text-primary text-center" role="status">
+                                <span className="visually-hidden">Loading Reviews</span>
                             </div>
                         </>
                     }

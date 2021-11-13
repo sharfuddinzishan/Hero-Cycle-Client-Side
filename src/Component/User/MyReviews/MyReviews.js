@@ -8,7 +8,7 @@ const MyReviews = () => {
 
     useEffect(() => {
         setLoadingReview(false);
-        axios.get('http://localhost:4000/reviews')
+        axios.get('https://hero-cycle.herokuapp.com/reviews')
             .then(result => {
                 if (result.data) {
                     setReviews(result.data)
@@ -30,7 +30,7 @@ const MyReviews = () => {
         }
         else {
             setReviewAction(false);
-            axios.delete(`http://localhost:4000/reviews/${reviewID}`, { headers })
+            axios.delete(`https://hero-cycle.herokuapp.com/reviews/${reviewID}`, { headers })
                 .then(result => {
                     if (result.data.deletedCount) {
                         setReviewAction(true);

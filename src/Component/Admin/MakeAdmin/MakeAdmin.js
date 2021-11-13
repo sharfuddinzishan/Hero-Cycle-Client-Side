@@ -17,7 +17,7 @@ const MakeAdmin = () => {
             "authorization": 'Bearer ' + token
         };
         const user = { email }
-        axios.put('http://localhost:4000/user/admin', user, { headers })
+        axios.put('https://hero-cycle.herokuapp.com/user/admin', user, { headers })
             .then(result => {
                 console.log(result)
                 if (result.data.modifiedCount) {

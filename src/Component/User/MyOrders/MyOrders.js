@@ -37,7 +37,7 @@ const MyOrders = () => {
         if (prompt === true) {
             setRefreshed(false);
             (orderStatus === 'cancel' || orderStatus === 'confirm') ||
-                axios.put(`http://localhost:4000/order/${orderID}?action=cancel`, { headers })
+                axios.put(`https://hero-cycle.herokuapp.com/order/${orderID}?action=cancel`, { headers })
                     .then(result => {
                         console.log(result)
                         if (result.data.modifiedCount === '0') { alert('Failed'); setRefreshed(false) }
@@ -55,7 +55,7 @@ const MyOrders = () => {
         if (prompt === true) {
             setRefreshed(false);
             console.log(headers)
-            orderStatus !== 'confirm' && axios.delete(`http://localhost:4000/order/${orderID}`, { headers })
+            orderStatus !== 'confirm' && axios.delete(`https://hero-cycle.herokuapp.com/order/${orderID}`, { headers })
                 .then(result => {
                     console.log(result)
                     if (result.data.deletedCount === '0') { alert('Failed'); setRefreshed(false) }

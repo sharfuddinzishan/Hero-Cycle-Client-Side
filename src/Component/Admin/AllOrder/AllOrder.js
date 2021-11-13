@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const AllOrder = (props) => {
     const getOrder = props.order || {}
+    // set Order to parent state to trigger which button and which modal need to call 
     const setOrderID = props.setOrderID
     const setSingleOrderDetails = props.setSingleOrderDetails
     const [getSingleCycleInfo, setSingleCycleInfo] = useState({});

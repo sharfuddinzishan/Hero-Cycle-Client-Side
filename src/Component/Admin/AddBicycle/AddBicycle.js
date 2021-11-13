@@ -16,10 +16,13 @@ const AddBicycle = () => {
     });
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
+
+    // Get Token 
     const token = localStorage.getItem('tokenID')
     let headers = {
         "authorization": 'Bearer ' + token
     };
+    // Take Input from Form 
     const handleInput = e => {
         const copyCycle = { ...singleCycle };
         copyCycle[e.target.name] = e.target.value;

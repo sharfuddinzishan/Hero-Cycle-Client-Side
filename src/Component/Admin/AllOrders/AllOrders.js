@@ -9,6 +9,7 @@ import './AllOrders.css'
 const AllOrders = () => {
     const [getOrderID, setOrderID] = useState('');
     const [getSingleOrderDetails, setSingleOrderDetails] = useState({});
+    // If Any Update Delete Performed then page re-render by this which used as dependency 
     let [refreshed, setRefreshed] = useState(false)
     const [orders, setOrders] = useState([]);
     const [loader, setLoader] = useState(false);

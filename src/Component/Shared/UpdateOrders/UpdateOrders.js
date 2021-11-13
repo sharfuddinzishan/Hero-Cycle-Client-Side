@@ -6,6 +6,7 @@ import useFirebase from '../../../Hooks/useFirebase';
 const UpdateOrders = (props) => {
     const { getOrderID, setRefreshed } = props || {}
     const [getSingleOrderDetails, setSingleOrderDetails] = useState({});
+    // Wait to load data from database 
     let [loading, setLoading] = useState(true)
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);

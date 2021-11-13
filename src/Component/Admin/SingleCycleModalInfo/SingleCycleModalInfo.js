@@ -11,6 +11,7 @@ const SingleCycleModalInfo = (props) => {
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                     <div className="modal-body">
+                        {/* Modal For Details of bycycle, got cycleID from Parent State  */}
                         <SingleBicycleDetails cycleID={cycleID}></SingleBicycleDetails>
                     </div>
                     <div className="modal-footer">

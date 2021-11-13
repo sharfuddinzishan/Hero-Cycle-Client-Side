@@ -48,7 +48,6 @@ function App() {
               <NotFound></NotFound>
             </Route>
           </Switch>
-          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </>

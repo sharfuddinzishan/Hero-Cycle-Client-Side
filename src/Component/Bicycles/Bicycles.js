@@ -26,8 +26,8 @@ const Bicycles = (props) => {
     return (
         <>
             <div className="container p-3">
-                <h1 className="text-center">Explore <span className="text-primary fw-bold">Hero Cycles</span> </h1>
-                <div className="row row-cols-1 row-cols-md-3 g-2">
+                <h1 className="pb-2 border-bottom text-center text-center">Explore <span className="text-primary fw-bold">Hero Cycles</span> </h1>
+                <div className="row row-cols-1 row-cols-md-3 g-2 [y-5">
                     {
                         !loader &&
                         cycles.map(cycle => <Bicycle key={cycle._id} cycle={cycle}></Bicycle>)

@@ -12,6 +12,7 @@ const MyOrders = () => {
     const [orders, setOrders] = useState([]);
     const [loader, setLoader] = useState(false);
     const { user } = useAuth()
+
     useEffect(() => {
         setLoader(true);
         let url = `https://hero-cycle.herokuapp.com/user/orders?email=${user?.email}`
@@ -26,6 +27,47 @@ const MyOrders = () => {
             .catch(e => { })
             .finally(() => { setLoader(false) });
     }, [refreshed])
+    const token = localStorage.getItem('tokenID')
+    let headers = {
+        "authorization": 'Bearer ' + token
+    };
+
+    const handleCancel = (orderID, orderStatus) => {
+        const prompt = window.confirm('Want To Cancel  Order?');
+        if (prompt === true) {
+            setRefreshed(false);
+            (orderStatus === 'cancel' || orderStatus === 'confirm') ||
+                axios.put(`http://localhost:4000/order/${orderID}?action=cancel`, { headers })
+                    .then(result => {
+                        console.log(result)
+                        if (result.data.modifiedCount === '0') { alert('Failed'); setRefreshed(false) }
+                        else setRefreshed(true);
+                    })
+                    .catch(() => setRefreshed(false))
+                    .finally(() => {
+                        setRefreshed(false);
+                    })
+        }
+    }
+
+    const handleDelete = (orderID, orderStatus) => {
+        const prompt = window.confirm('Want To Delete  Order?');
+        if (prompt === true) {
+            setRefreshed(false);
+            console.log(headers)
+            orderStatus !== 'confirm' && axios.delete(`http://localhost:4000/order/${orderID}`, { headers })
+                .then(result => {
+                    console.log(result)
+                    if (result.data.deletedCount === '0') { alert('Failed'); setRefreshed(false) }
+                    else setRefreshed(true);
+                })
+                .catch(() => setRefreshed(false))
+                .finally(() => {
+                    setRefreshed(false);
+                })
+        }
+    }
+
     return (
         <>
             <h4 className="py-2">My Orders ({user?.email})</h4>
@@ -36,16 +78,47 @@ const MyOrders = () => {
                             orders.map(order => {
                                 return <div className="col" key={order._id}>
                                     <div class="card">
+                                        <button
+                                            type="button"
+                                            class="btn-close btn-close-black d-block ms-auto"
+                                            aria-label="Close"
+                                            onClick={() => handleCancel(order._id, order.orderStatus)}
+                                            disabled={
+                                                order.orderStatus === 'cancel' || order.orderStatus === 'confirm'
+                                                    ? true : false}
+                                        >
+                                        </button>
                                         <MyOrder setSingleOrderDetails={setSingleOrderDetails} setOrderID={setOrderID} order={order}></MyOrder>
+                                        <button
+                                            type="button"
+                                            className="btn btn-sm btn-warning"
+                                            onClick={() => handleCancel(order._id, order.orderStatus)}
+                                            disabled={
+                                                order.orderStatus === 'cancel' || order.orderStatus === 'confirm'
+                                                    ? true : false}
+                                        >
+                                            Cancel Order
+                                        </button>
                                         <button
                                             type="button"
                                             id="adminCycleUpdateBtn"
                                             className="btn btn-sm btn-primary"
                                             data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop"
-                                            onClick={() => { setOrderID(order._id); setSingleOrderDetails(order) }}
+                                            onClick={() => { setOrderID(order._id); }}
+                                            disabled={
+                                                order.orderStatus === 'confirm'
+                                                    ? true : false}
                                         >
                                             Update
+                                        </button>
+                                        <button
+                                            type="button"
+                                            className="btn btn-sm btn-danger"
+                                            onClick={() => handleDelete(order._id, order.orderStatus)}
+                                            disabled={order.orderStatus === 'confirm' ? true : false}
+                                        >
+                                            Delete Order
                                         </button>
                                     </div>
                                 </div>
@@ -56,7 +129,7 @@ const MyOrders = () => {
             </div>
             {
                 <>
-                    <UpdateOrders getSingleOrderDetails={getSingleOrderDetails} setRefreshed={setRefreshed} getOrderID={getOrderID}></UpdateOrders>
+                    <UpdateOrders setRefreshed={setRefreshed} getOrderID={getOrderID}></UpdateOrders>
                     <SingleOrderModal getSingleOrderDetails={getSingleOrderDetails} getOrderID={getOrderID}></SingleOrderModal>
                 </>
             }

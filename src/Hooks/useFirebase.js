@@ -23,7 +23,12 @@ const useFirebase = () => {
             .then(response => {
                 setUser(response.user);
                 addUserToDB(response.user.email, response.user.displayName, true)
-                history.replace(redirect_uri);
+                if (isAdmin) {
+                    history.replace('/dashboard');
+                }
+                else {
+                    history.replace(redirect_uri);
+                }
             })
             .catch(error => setError(error.message))
             .finally(() => {
@@ -69,7 +74,12 @@ const useFirebase = () => {
         signInWithEmailAndPassword(auth, email, pass)
             .then(response => {
                 setUser(response.user);
-                history.replace(redirect_uri);
+                if (isAdmin) {
+                    history.replace('/dashboard');
+                }
+                else {
+                    history.replace(redirect_uri);
+                }
             })
             .catch(error => setError(error.message))
             .finally(() => setLoading(false));

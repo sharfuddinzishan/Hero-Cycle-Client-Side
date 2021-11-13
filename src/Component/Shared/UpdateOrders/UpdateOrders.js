@@ -1,57 +1,76 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import useAuth from '../../../Hooks/useAuth';
+import useFirebase from '../../../Hooks/useFirebase';
 
 const UpdateOrders = (props) => {
-    const { getOrderID, setRefreshed, getSingleOrderDetails } = props
+    const { getOrderID, setRefreshed } = props || {}
+    const [getSingleOrderDetails, setSingleOrderDetails] = useState({});
     let [loading, setLoading] = useState(true)
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const [getSingleOrderInfo, setSingleOrderInfo] = useState({})
-
     useEffect(() => {
         setLoading(true)
-        setSingleOrderInfo({ ...getSingleOrderDetails })
-        setLoading(false)
-    }, [])
+        setSuccess(false)
+        setError(false)
+        axios.get(`http://localhost:4000/orders/${getOrderID}`)
+            .then(result => {
+                if (result?.data?.model) {
+                    setSingleOrderDetails(result.data);
+                    setLoading(false)
+                }
+            })
+            .catch(() => {
+                setLoading(false)
+            })
+    }, [getOrderID])
 
-    const token = localStorage.getItem('tokenID')
-    let headers = {
-        "authorization": 'Bearer ' + token
-    };
+    const { isAdmin, loadingAdmin, user } = useFirebase()
+    if (loadingAdmin) return 'Loading';
 
     const handleInput = e => {
-        const copyOrder = { ...getSingleOrderInfo };
-        copyOrder[e.target.name] = e.target.value;
-        setSingleOrderInfo(copyOrder);
+        const copyCycle = { ...getSingleOrderDetails };
+        copyCycle[e.target.name] = e.target.value;
+        setSingleOrderDetails(copyCycle);
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSuccess(false)
-        setRefreshed(false)
-        setError(false)
+        const token = localStorage.getItem('tokenID')
+        let headers = {
+            "authorization": 'Bearer ' + token
+        };
         setLoading(true)
-        axios.put('https://hero-cycle.herokuapp.com/order', getSingleOrderInfo)
+        setSuccess(false)
+        setError(false)
+        setRefreshed(false)
+        axios.put('http://localhost:4000/order', getSingleOrderDetails, { headers })
             .then(result => {
                 console.log(result)
-                if (!result.data.modifiedCount) { setError(true) }
+                if (!result?.data?.modifiedCount) { setError(true) }
                 else {
                     setSuccess(true)
-                    setLoading(false)
                     setRefreshed(true)
                 }
             })
-            .catch(() => setError(true))
+            .catch(e => setError(true))
+            .finally(() => setLoading(false))
     };
+
     return (
         <>
             <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-xl modal-fullscreen-sm-down modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="staticBackdropLabel"> {getSingleOrderDetails?.model}</h5>
+                            {!loading && <h5 className="modal-title" id="staticBackdropLabel"> {getSingleOrderDetails?.model}</h5>}
                             <button onClick={() => { setError(false); setSuccess(false) }} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
+                            {/* {
+                                getSingleOrderDetails?.orderStatus === 'confirm' && <div className="alert alert-sm alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Foebidden!</strong> Update Not Possible As Order Already Confirmed. Mail us.
+                                </div>
+                            } */}
                             {
                                 success && <div className="alert alert-sm alert-success alert-dismissible fade show" role="alert">
                                     <strong>Updated!</strong> Order.
@@ -61,14 +80,7 @@ const UpdateOrders = (props) => {
                             }
                             {
                                 error && <div className="alert alert-sm alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Failed!</strong> To Update Order For Unauthorized or Order Status is Complete.
-                                    <button type="button" onClick={() => setError(false)} className="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
-                                </div>
-                            }
-                            {
-                                getSingleOrderDetails?.orderStatus === 'confirm' && <div className="alert alert-sm alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Foebidden!</strong> Update Not Possible As Order Already Confirmed. Mail us.
+                                    <strong>Failed!</strong> To Update Order.
                                     <button type="button" onClick={() => setError(false)} className="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
@@ -87,7 +99,7 @@ const UpdateOrders = (props) => {
                                             >
                                                 <option value="cancel">Cancel</option>
                                                 <option value="pending">Pending</option>
-                                                <option value="confirm">Confirm</option>
+                                                {isAdmin && <option value="confirm">Confirm</option>}
                                             </select>
                                         </div>
                                     </div>
@@ -112,13 +124,13 @@ const UpdateOrders = (props) => {
                                             name="orderNotes"
                                             rows="2"
                                             placeholder="Provide Short Summary"
-                                            required
                                             onBlur={handleInput}
                                             defaultValue={getSingleOrderDetails.orderNotes}
+                                            disabled={isAdmin ? true : false}
                                         />
                                     </div>
                                     {
-                                        getSingleOrderDetails.orderStatus !== 'confirm' && <button className="d-block ms-auto btn btn-primary fw-bold">Update Order</button>
+                                        ((!isAdmin && getSingleOrderDetails.orderStatus !== 'confirm') || isAdmin) && <button className="d-block ms-auto btn btn-primary fw-bold">Update Order</button>
                                     }
                                 </form>
                             }

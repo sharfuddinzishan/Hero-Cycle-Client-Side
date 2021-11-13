@@ -106,6 +106,7 @@ const useFirebase = () => {
         // For performance unsubscribe used 
         const unsubscribe = onAuthStateChanged(auth, user => {
             setError('')
+            setLoading(true);
             if (user) {
                 let url = `https://hero-cycle.herokuapp.com/user/admin?email=${user.email}`;
                 axios.get(url)

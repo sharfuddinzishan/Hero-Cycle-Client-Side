@@ -15,6 +15,7 @@ import {
     useRouteMatch
 } from "react-router-dom";
 import useFirebase from '../../../Hooks/useFirebase';
+import MakeAdmin from '../../Admin/MakeAdmin/MakeAdmin';
 
 const Dashboard = () => {
     let { path, url } = useRouteMatch();
@@ -68,6 +69,16 @@ const Dashboard = () => {
                                             All Orders
                                         </NavLink>
                                     </li>
+                                    <li className="bg-info mb-1 text-center">
+                                        <NavLink className="nav-link text-light"
+                                            to={`${url}/admin/makeadmin`}
+                                            activeStyle={{
+                                                fontWeight: "bold",
+                                                color: "#636"
+                                            }}>
+                                            Make Admin
+                                        </NavLink>
+                                    </li>
                                     <span className="w-100 d-block border border-2 border-top" ></span>
                                 </>
                             }
@@ -116,6 +127,9 @@ const Dashboard = () => {
                             </AdminRoute>
                             <AdminRoute path={`${path}/admin/show/orders`}>
                                 <AllOrders></AllOrders>
+                            </AdminRoute>
+                            <AdminRoute path={`${path}/admin/makeadmin`}>
+                                <MakeAdmin></MakeAdmin>
                             </AdminRoute>
                             <Route path={`${path}/user/show/orders`}>
                                 <MyOrders></MyOrders>

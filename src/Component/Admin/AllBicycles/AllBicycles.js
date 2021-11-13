@@ -27,7 +27,7 @@ const AllBicycles = () => {
         const prompt = window.confirm('Want To Delete Cycle?');
         if (prompt === true) {
             setRefreshed(false);
-            axios.delete(`http://localhost:4000/cycles/${cycleID}`)
+            axios.delete(`https://hero-cycle.herokuapp.com/cycles/${cycleID}`)
                 .then(result => {
                     if (result.data.deletedCount === '0') {
                         alert('Failed To Delete Cycle');

@@ -48,7 +48,7 @@ const Reviews = () => {
                                                 fullSymbol={
                                                     <i className='bx bxs-star bx-tada' ></i>
                                                 }
-                                                initialRating={3}
+                                                initialRating={review.rating}
                                                 readonly
                                             /></span>
                                         <h5 className="card-title">{review.subject}</h5>

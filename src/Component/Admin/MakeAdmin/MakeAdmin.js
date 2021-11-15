@@ -3,10 +3,14 @@ import axios from 'axios';
 
 const MakeAdmin = () => {
     const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
     const handleInput = (e) => {
         setEmail(e.target.value)
+    }
+    const handleInputPass = (e) => {
+        setPass(e.target.value)
     }
     const handleSubmit = (e) => {
         setSuccess(false)
@@ -16,7 +20,7 @@ const MakeAdmin = () => {
         let headers = {
             "authorization": 'Bearer ' + token
         };
-        const user = { email }
+        const user = { email, pass }
         axios.put('https://hero-cycle.herokuapp.com/user/admin', user, { headers })
             .then(result => {
                 console.log(result)
@@ -50,7 +54,15 @@ const MakeAdmin = () => {
                     <input
                         type="email"
                         label="Email"
+                        name="email"
                         onBlur={handleInput}
+                        style={{ width: '60%' }}
+                    />
+                    <input
+                        type="password"
+                        label="Password"
+                        name="pass"
+                        onBlur={handleInputPass}
                         style={{ width: '60%' }}
                     />
                     <br /><br />

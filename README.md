@@ -6,6 +6,9 @@ Client Side [Click here for Client Side Link ](https://github.com/programming-he
 
 Server Side [Click here for Client Side Link ](https://github.com/programming-hero-web-course-4/niche-website-server-side-sharfuddinzishan).
 
+# Site Logged Information
+admin@admin.com
+password 123456
 
 
 # Featured of this project

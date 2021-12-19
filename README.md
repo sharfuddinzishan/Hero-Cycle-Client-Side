@@ -2,9 +2,9 @@
 
 This is Full Complete Project Based On react js [Click here for LIve Site Firebase Link](https://hero-cycle.web.app/).
 
-Client Side [Click here for Client Side Link ](https://github.com/programming-hero-web-course-4/niche-website-client-side-sharfuddinzishan).
+Client Side [Click here for Client Side Link ](https://github.com/sharfuddinzishan/Hero-Cycle-Client-Side).
 
-Server Side [Click here for Client Side Link ](https://github.com/programming-hero-web-course-4/niche-website-server-side-sharfuddinzishan).
+Server Side [Click here for Client Side Link ](https://github.com/sharfuddinzishan/Hero-Cycle-Server-Side).
 
 # Site Logged Information
 admin@admin.com
